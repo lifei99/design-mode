@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    	<script>
+    		// 消息的发布者
+    	var dog = {
+    			jiao:function(){
+    				console.log('狗叫了')
+    				// 发布消息：
+    				// 遍历订阅者列表，执行订阅者数组中的每一个行为
+    				this.listener.forEach(function( fn ){
+    					fn();
+    				});
+
+    			},
+    			// 订阅者列表，用来储存订阅者
+    			listener: [],
+    			addListener: function( obj ) {
+    				this.listener.push(obj);
+    			}
+    		}
+
+    		// 主人对象
+    		var zhuren = {
+    			qichuang: function() {
+    				console.log("主人起床了");
+    			}
+    		};
+
+    		// 小偷
+    		var xiaotou = {
+    			tiaochuang: function() {
+    				console.log("小偷，跳窗户了");
+    			}
+    		};
+
+    		// 狗jiao方法，触发了以后，主人的起床方法以及小偷的tiaochuang方法会被调用
+    		
+    		// 主人订阅狗叫的方法
+    		dog.addListener(zhuren.qichuang);
+    		// 小偷订阅狗叫的方法
+    		dog.addListener(xiaotou.tiaochuang);
+
+    		dog.jiao();
+    	</script>
+    </body>
+</html>

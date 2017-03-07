@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <script>
+    function createBlog(name, url) {
+        var o = new Object();
+        o.name = name;
+        o.url = url;
+        o.sayUrl = function() {
+            console.log(this.url);
+        }
+        return o;
+    }
+
+    var blog1 = createBlog('wuyuchang', 'http://www.jb51.net/');
+    </script>
+</body>
+
+</html>
